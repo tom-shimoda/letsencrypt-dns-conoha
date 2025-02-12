@@ -1,3 +1,5 @@
+最初にconoha_id_sampleを複製してconoha_idというファイルを作成
+
 # letsencrypt-dns-conoha
 
 ## Overview
