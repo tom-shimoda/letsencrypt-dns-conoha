@@ -1,24 +1,21 @@
-最初にconoha_id_sampleを複製してconoha_idというファイルを作成
-
 # letsencrypt-dns-conoha
 
 ## Overview
 Script to get Let's Encrypt Wildcard SSL Certificate using DNS in ConoHa VPS.
 
 ## Requirements
-- CentOS7
 - certbot 0.22.0+
 - jq
 - DNS to manage your domain with ConoHa VPS.
 
 ## Setup
 - Place code in your server.
-- Set username, password and tenantId in the conoha_id
+- Create a conoha_id file using the conoha_id_example file as a reference.
 
 ## Usage
 - Test to get Wildcard SSL Certificate.
 ```
-# certbot certonly \
+sudo certbot certonly \
 --dry-run \
 --manual \
 --agree-tos \
@@ -33,9 +30,16 @@ Script to get Let's Encrypt Wildcard SSL Certificate using DNS in ConoHa VPS.
 --manual-cleanup-hook /path/to/letsencrypt-dns-conoha/delete_conoha_dns_record.sh
 ```
 
+or
+
+Create certbot_args file referring to certbot_args_example and run try_get_certificate_dry_run.sh
+```
+sudo bash try_get_certificate_dry_run.sh
+```
+
 - Get Wildcard SSL Certificate.
 ```
-# certbot certonly \
+sudo certbot certonly \
 --manual \
 --agree-tos \
 --no-eff-email \
@@ -49,14 +53,21 @@ Script to get Let's Encrypt Wildcard SSL Certificate using DNS in ConoHa VPS.
 --manual-cleanup-hook /path/to/letsencrypt-dns-conoha/delete_conoha_dns_record.sh
 ```
 
+or
+
+Create certbot_args file referring to certbot_args_example and run try_get_certificate_dry_run.sh
+```
+sudo bash try_get_certificate.sh
+```
+
 - Test to renew Wildcard SSL Certificate.
 ```
-# certbot renew --force-renewal --dry-run
+sudo certbot renew --force-renewal --dry-run
 ```
 
 - Renew Wildcard SSL Certificate.
 ```
-# certbot renew
+sudo certbot renew
 ```
 
 ## References
