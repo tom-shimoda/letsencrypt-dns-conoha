@@ -70,6 +70,17 @@ sudo certbot renew --force-renewal --dry-run
 sudo certbot renew
 ```
 
+## cronで自動更新して認証ファイルをnginxサーバーに送る方法
+1. "rootユーザーから"nginxサーバーにssh接続できるようにしておく。
+2. /etc/cron.d/に拡張子なしのファイル(my_certbot等)を作成し以下を記載。
+    権限の関係でrootユーザーで作成する必要がある。
+    [参考](https://qiita.com/UNILORN/items/a1a3f62409cdb4256219)
+```
+# rootユーザーで毎日AM2:00に実行
+# (fullchain.pem、privkey.pemの所有権がrootになっているため、rootユーザーで実行することにした)
+* 2 * * * root certbot renew && scp /etc/letsencrypt/live/<ドメイン名>/fullchain.pem <送り先フォルダ> && scp /etc/letsencrypt/live/<ドメイン名>/privkey.pem <送り先フォルダ>
+```
+
 ## References
 - [作者ブログ記事](https://www.eastforest.jp/vps/6149)
 - [Pre and Post Validation Hooks](https://certbot.eff.org/docs/using.html#pre-and-post-validation-hooks)
