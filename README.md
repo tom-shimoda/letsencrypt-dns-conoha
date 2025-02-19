@@ -13,7 +13,7 @@ Script to get Let's Encrypt Wildcard SSL Certificate using DNS in ConoHa VPS.
 - Create a conoha_id file using the conoha_id_example file as a reference.
 
 ## Usage
-- Test to get Wildcard SSL Certificate.
+### Test to get Wildcard SSL Certificate.
 ```
 sudo certbot certonly \
 --dry-run \
@@ -37,7 +37,7 @@ Create certbot_args file referring to certbot_args_example and run try_get_certi
 sudo bash try_get_certificate_dry_run.sh
 ```
 
-- Get Wildcard SSL Certificate.
+### Get Wildcard SSL Certificate.
 ```
 sudo certbot certonly \
 --manual \
@@ -60,12 +60,12 @@ Create certbot_args file referring to certbot_args_example and run try_get_certi
 sudo bash try_get_certificate.sh
 ```
 
-- Test to renew Wildcard SSL Certificate.
+### Test to renew Wildcard SSL Certificate.
 ```
 sudo certbot renew --force-renewal --dry-run
 ```
 
-- Renew Wildcard SSL Certificate.
+### Renew Wildcard SSL Certificate.
 ```
 sudo certbot renew
 ```
